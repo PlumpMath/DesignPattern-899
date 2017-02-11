@@ -10,36 +10,46 @@ namespace Caculator
     {
         static void Main(string[] args)
         {
-            Console.Write("Plz input a nuber A:");
-            String A = Console.ReadLine();
-            Console.Write("Plz choose an operator + - * / :");
-            String B = Console.ReadLine();
-            Console.Write("Plz input a nuber B:");
-            String C = Console.ReadLine();
-            String D = ""; // result
-
-            if (B == "+")
+            try
             {
-                D = Convert.ToString(Convert.ToDouble(A) + Convert.ToDouble(C));
-            }
+                Console.Write("Plz input a nuber A:");
+                String strNumberA = Console.ReadLine();
+                Console.Write("Plz choose an operator + - * / :");
+                String strOperate = Console.ReadLine();
+                Console.Write("Plz input a nuber B:");
+                String strNumberB = Console.ReadLine();
+                String strResult = ""; // result
 
-            if (B == "-")
+                switch (strOperate)
+                {
+                    case "+":
+                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) + Convert.ToDouble(strNumberB));
+                        break;
+                    case "-":
+                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) - Convert.ToDouble(strNumberB));
+                        break;
+                    case "*":
+                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) * Convert.ToDouble(strNumberB));
+                        break;
+                    case "/":
+                        if (strNumberB != "0")
+                        {
+                            strResult = Convert.ToString(Convert.ToDouble(strNumberA) / Convert.ToDouble(strNumberB));
+                        }
+                        else
+                        {
+                            strResult = "Not be zero";
+                        }
+                        break;
+                }
+
+                Console.WriteLine("Result is: {0}", strResult);
+                Console.Read();
+            }
+            catch (Exception ex)
             {
-                D = Convert.ToString(Convert.ToDouble(A) - Convert.ToDouble(C));
+                Console.WriteLine("error: {0}", ex.Message);
             }
-
-            if (B == "*")
-            {
-                D = Convert.ToString(Convert.ToDouble(A) * Convert.ToDouble(C));
-            }
-
-            if (B == "/")
-            {
-                D = Convert.ToString(Convert.ToDouble(A) / Convert.ToDouble(C));
-            }
-
-            Console.WriteLine("Result is: {0}", D);
-            Console.Read();
         }
     }
 }
