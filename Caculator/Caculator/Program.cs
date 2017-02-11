@@ -20,28 +20,7 @@ namespace Caculator
                 String strNumberB = Console.ReadLine();
                 String strResult = ""; // result
 
-                switch (strOperate)
-                {
-                    case "+":
-                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) + Convert.ToDouble(strNumberB));
-                        break;
-                    case "-":
-                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) - Convert.ToDouble(strNumberB));
-                        break;
-                    case "*":
-                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) * Convert.ToDouble(strNumberB));
-                        break;
-                    case "/":
-                        if (strNumberB != "0")
-                        {
-                            strResult = Convert.ToString(Convert.ToDouble(strNumberA) / Convert.ToDouble(strNumberB));
-                        }
-                        else
-                        {
-                            strResult = "Not be zero";
-                        }
-                        break;
-                }
+                strResult = Convert.ToString(Operation.GetResult(Convert.ToDouble(strNumberA), Convert.ToDouble(strNumberB), strOperate));
 
                 Console.WriteLine("Result is: {0}", strResult);
                 Console.Read();
