@@ -20,7 +20,12 @@ namespace Caculator
                 String strNumberB = Console.ReadLine();
                 String strResult = ""; // result
 
-                strResult = Convert.ToString(Operation.GetResult(Convert.ToDouble(strNumberA), Convert.ToDouble(strNumberB), strOperate));
+
+                Operation oper;
+                oper = OperationFactory.createOperate(strOperate);
+                oper.NumberA = Convert.ToDouble(strNumberA);
+                oper.NumberB = Convert.ToDouble(strNumberB);
+                strResult = Convert.ToString(oper.GetResult());
 
                 Console.WriteLine("Result is: {0}", strResult);
                 Console.Read();
